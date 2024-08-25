@@ -12,8 +12,9 @@ const VideoCard = ({
   },
 }) => {
   const [play, setPlay] = useState(false);
+
   return (
-    <View className="flex-col items-center px-4 mb-14 ">
+    <View className="flex-col items-center px-4 mb-14">
       <View className="flex-row items-start gap-3">
         <View className="justify-center items-center flex-row flex-1">
           <View className="w-[46px] h-[46px] rounded-lg border border-secondary justify-center items-center p-0.5">
@@ -43,28 +44,28 @@ const VideoCard = ({
         </View>
       </View>
       {play ? (
-       <Video
-       // source={{uri:video}}
-         source={{uri:"https://www.appsloveworld.com/wp-content/uploads/2018/10/640.mp4"}}
-        className="w-full h-60 rounded-xl mt-3"
-        resizeMode={ResizeMode.CONTAIN}
-        useNativeControls
-        shouldPlayr
-        onPlaybackStatusUpdate={(status)=>{
-          if(status.didJustFinish){
-            setPlay(false);
-          }
-        }}
- 
- 
-      />
+        <Video
+          // source={{ uri: video }}
+          source={{ uri: "https://www.appsloveworld.com/wp-content/uploads/2018/10/640.mp4" }}
+          className="w-full h-60 rounded-xl mt-3"
+          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls
+          shouldPlay
+          onPlaybackStatusUpdate={(status) => {
+            if (status.didJustFinish) {
+              setPlay(false);
+            }
+          }}
+        />
       ) : (
-        <TouchableOpacity className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
-        activeOpacity={0.7} onPress={()=>setPlay(true)}
+        <TouchableOpacity
+          className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
+          activeOpacity={0.7}
+          onPress={() => setPlay(true)}
         >
           <Image
             source={{ uri: thumbnail }}
-            className="w-full h-full rounded-xl mt-3"
+            className="w-full h-full rounded-xl"
             resizeMode="cover"
           />
           <Image

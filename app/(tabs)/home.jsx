@@ -10,8 +10,10 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { getAllPosts, getLastestPosts } from "../../lib/appwrite";
 import useAppWrite from "../../lib/useAppWrite";
 import VideoCard from "../../components/VideoCard";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Home = () => {
+  const { user, setUser, setIsLogged } = useGlobalContext();
   const { data: posts,refetch} = useAppWrite(getAllPosts)
   const { data: lastestPosts} = useAppWrite(getLastestPosts)
   
@@ -39,10 +41,10 @@ const Home = () => {
               <View className="justify-between items-start flex-row mb-6">
                 <View>
                   <Text className="font-pmedium text-sm text-gray-100">
-                    Welcome Back
+                    Welcome Back,
                   </Text>
                   <Text className="text-2xl font-psemibold text-gray-100">
-                    Kavinda
+                    {user?.username}
                   </Text>
                 </View>
                 <View className="mt-1.5">
